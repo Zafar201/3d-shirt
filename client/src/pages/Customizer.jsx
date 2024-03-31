@@ -63,10 +63,14 @@ const Customizer = () => {
         })
       })
 
-      const data = await response.json();
-
-      handleDecals(type, `data:image/png;base64,${data.photo}`)
+      const data = await response?.json();
+      if(data){
+        console.log(error,'abcccd')
+        handleDecals(type, `data:image/png;base64,${data?.photo}`)
+      }
+    
     } catch (error) {
+      console.log(error,'abccc')
       alert(error)
     } finally {
       setGeneratingImg(false);
@@ -139,7 +143,7 @@ const Customizer = () => {
               </div>
             </div>
           </motion.div>
-
+          <button>download</button>
           <motion.div
             className="absolute z-10 top-5 right-5"
             {...fadeAnimation}
@@ -166,6 +170,7 @@ const Customizer = () => {
               />
             ))}
           </motion.div>
+          
         </>
       )}
     </AnimatePresence>
